@@ -13,12 +13,13 @@ pipeline{
 	stages{
 		stage('Source Code'){
 			steps{
-				git url: 'https://github.com/sanjushyam001/spring-petclinic.git',branch: 'main'	
+				git url: 'https://github.com/sanjushyam001/spring-petclinic.git' ,branch: 'main'	
 			}
 		}
 		stage('Build the code'){
 			steps{
-				sh script: "/opt/apache-maven-3.8.8/bin/mvn clean package"
+				//sh script: "/opt/apache-maven-3.8.8/bin/mvn clean package"
+				sh script: "/opt/apache-maven-3.8.8/bin/mvn ${params.GOAL}"
 			}
 		}
 		stage('Reporting and Archiving'){
